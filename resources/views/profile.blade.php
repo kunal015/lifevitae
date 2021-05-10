@@ -34,10 +34,11 @@ tr:nth-child(even) {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Date Of Birth</th>
-                            <th>gender</th>
-                            <th>description</th>
-                            <th></th>
-                            <th></th>
+                            <th>Gender</th>
+                            <th>Description</th>
+                            <th>Operation</th>
+                            <th>Operation</th>
+                            <th>Operation</th>
                         </tr>
                             <tr>
                                 <td>{{$LoggedUserInfo->name}}</td>
@@ -47,6 +48,7 @@ tr:nth-child(even) {
                                 <td>{{$LoggedUserInfo->desc}}</td>
                                 <td><a href="logout">Logout</a></td>
                                 <td><a href={{"delete/".$LoggedUserInfo['id']}}>Delete</a></td>
+                                <td><a href="list">List</a></td>
                             </tr>
                     </table>
                 </div>

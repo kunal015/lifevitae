@@ -25,3 +25,5 @@ Route::post('check',[App\Http\Controllers\StudentController::class, 'check'])->n
 Route::get('profile',[App\Http\Controllers\StudentController::class, 'profile']);
 Route::get('logout',[App\Http\Controllers\StudentController::class, 'logout']);
 Route::get('delete/{id}',[App\Http\Controllers\StudentController::class, 'delete']);
+Route::get('list',[App\Http\Controllers\StudentController::class, 'list']);
+

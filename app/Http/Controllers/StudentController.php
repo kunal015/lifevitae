@@ -65,6 +65,11 @@ class StudentController extends Controller
         $data->delete();
         return redirect('login');
     }
+    function list()
+    {
+        $data=Student::all();
+        return view('list',['members'=>$data]);
+    }
 
     /**
      * Show the form for creating a new resource.
