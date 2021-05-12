@@ -70,7 +70,11 @@ class StudentController extends Controller
         $data=Student::all();
         return view('list',['members'=>$data]);
     }
-
+    function showdata($id)
+    {
+        $data=Student::find($id);
+        return view('edit',['data'=>$data]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -130,9 +134,21 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $req)
     {
-        //
+        $data=Student::find($req->id);
+        $data->name=$req->name;
+        $data->email=$req->email;
+        $data->password=$req->password;
+        $data->gender=$req->gender;
+        $data->dob=$req->dob;
+        $data->desc=$req->desc;
+        $data->save();
+        $user=Student::where('id','=',session('LoggedUser'))->first();
+            $data = [
+                "LoggedUserInfo"=>$user
+            ];
+        return view('profile', $data);
     }
 
     /**

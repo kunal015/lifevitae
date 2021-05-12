@@ -39,6 +39,7 @@ tr:nth-child(even) {
                             <th>Operation</th>
                             <th>Operation</th>
                             <th>Operation</th>
+                            <th>Operation</th>
                         </tr>
                             <tr>
                                 <td>{{$LoggedUserInfo->name}}</td>
@@ -49,6 +50,7 @@ tr:nth-child(even) {
                                 <td><a href="logout">Logout</a></td>
                                 <td><a href={{"delete/".$LoggedUserInfo['id']}}>Delete</a></td>
                                 <td><a href="list">List</a></td>
+                                <td><a href={{"edit/".$LoggedUserInfo['id']}}>Update</a></td>
                             </tr>
                     </table>
                 </div>
