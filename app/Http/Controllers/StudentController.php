@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -28,7 +29,7 @@ class StudentController extends Controller
         ]);
         $user=Student::where('email','=',$request->email)->first();
         if($user){
-            if(strcmp($request->password,$user->password)==0){
+            if(Hash::check($request->password,$user->password)){
                 $request->session()->put('LoggedUser',$user->id);
                 return redirect('profile');
             }
@@ -61,9 +62,8 @@ class StudentController extends Controller
     function delete($id)
     {
         $data=Student::find($id);
-        //echo "$data->id";
         $data->delete();
-        return redirect('login');
+        return redirect('list');
     }
     function list()
     {
@@ -101,7 +101,15 @@ class StudentController extends Controller
             'gender' => 'required',
             'desc' => 'required',
         ]);
-        Student::create($request->all());
+        $user=new Student;
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password= Hash::make($request->password);
+        $user->dob=$request->dob;
+        $user->gender=$request->gender;
+        $user->desc=$request->desc;
+        $query=$user->save();
+        //Student::create($request->all());
         return redirect()->route('index')->with('success','student created successfully.');
     }
 

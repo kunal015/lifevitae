@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Sign-Up Form</title>
 <style>
+<link  href="C:\xampp\htdocs\lifevitae\bootstrap\css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 .container {
   padding: 16px;
@@ -79,7 +80,6 @@ a {
 				flag=1;
 				alert("Error in repeating the password");
 			}
-        //var passwordformat=new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 		if(document.frm.password.value.length<7)
 			{
 				flag=1;
@@ -129,13 +129,13 @@ a {
             <input type="text" placeholder="Enter Your Full Name" name="name" value="{{old ('name')}}" required>
             <span class="text-danger">@error('name') {{ $message }}@enderror</span>
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" value="{{old ('email')}}"required>
-            <span class="text-danger">@error('email') {{ $message }}@enderror</span>
+            <input type="text" placeholder="Enter Email" name="email" value="{{old ('email')}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid Email Address" required>
+            <span class="text-danger">@error('email') {{ $message }}@enderror</span><br/>
             <label for="password"><b>Password</b></label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="showhim">info<div class="showme">Password must be atleast 8 characters long</div></span>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
             <span class="text-danger">@error('password') {{ $message }}@enderror</span>
             <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="psw1" required>
+            <input type="password" placeholder="Repeat Password" name="psw1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}" required>
             <label for="Date Of Birth"><b>Date Of Birth</b><br/></label>
             <input type="date" placeholder="Select date of birth" name="dob" required>
             <br/><br/>
